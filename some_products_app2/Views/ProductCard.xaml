@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="some_products_app2.Views.ProductCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:some_products_app2.Views"
+             mc:Ignorable="d" d:DesignWidth="800" Height="Auto" FontSize="20" Foreground="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#67BA80" RadiusX="30" RadiusY="30" Stroke="#F4E8D3" StrokeThickness="3" Grid.ColumnSpan="2">
+        </Rectangle>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10, 20, 0, 20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding PartnerType.PartnerTypeName, StringFormat={}{0} |}" FontSize="24"></TextBlock>
+                <TextBlock Text="{Binding PartnerImportName, StringFormat={} {0}}" FontSize="24"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Director.DirectorSurname, StringFormat={}{0}}"></TextBlock>
+                <TextBlock Text="{Binding Director.DirectorName, StringFormat={} {0}}"></TextBlock>
+                <TextBlock Text="{Binding Director.DirectorPatronymic, StringFormat={} {0}}"></TextBlock>
+            </StackPanel>
+            <TextBlock Text="{Binding Director.DirectorPhone, StringFormat={}+7 {0}}"></TextBlock>
+            <TextBlock Text="{Binding PartnerImportRating, StringFormat={}Рейтинг: {0}}"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="{Binding CalculateDiscount, StringFormat={}{0}%}" TextAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

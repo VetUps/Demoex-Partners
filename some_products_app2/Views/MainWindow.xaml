@@ -1,0 +1,61 @@
+﻿<Window x:Class="some_products_app2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:some_products_app2"
+        mc:Ignorable="d"
+        Title="Партнёры" Height="450" Width="900" Icon="../Resources/Мастер пол.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#F4E8D3 " Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Image Source="../Resources/Мастер пол.png" Height="89" Width="60" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Text="Мастер пол" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#67BA80"/>
+        </StackPanel>
+        <Button x:Name="addPartnerButton" Content="Добавить партнёра" VerticalAlignment="Center" FontSize="20" Grid.Column="1" Margin="0,0,5,0" Background="#67BA80" Foreground="#FFFFFF" Click="addPartnerButton_Click"></Button>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="ComboBox">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                <Label Content="Поиск"/>
+                <TextBox x:Name="searchTextBox" Width="200" FontSize="15" PreviewKeyUp="searchTextBox_PreviewKeyUp"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                <Label Content="Сортировка"/>
+                <ComboBox x:Name="sortComboBox" SelectionChanged="sortComboBox_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                <Label Content="Фильтрация"/>
+                <ComboBox x:Name="filterComboBox" SelectionChanged="filterComboBox_SelectionChanged"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView x:Name="partnersListView" HorizontalContentAlignment="Stretch" Background="#FFFFFF" Grid.ColumnSpan="2" Grid.Row="2" ItemsSource="{Binding ProductCardSource}">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="RedactItem"/>
+                    <MenuItem Header="Удалить" Click="RemoveItem"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</Window>
