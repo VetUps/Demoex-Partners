@@ -23,5 +23,7 @@ namespace some_products_app2.Views
         {
             InitializeComponent();
         }
+
+        // Чёт функционал накидал
     }
 }
